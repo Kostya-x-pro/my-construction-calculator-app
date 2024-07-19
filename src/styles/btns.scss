@@ -1,0 +1,15 @@
+@import 'variables.scss';
+
+.main__btn {
+  padding: 12px 20px;
+  font-size: 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  color: $white-text;
+  background: $main-color;
+  transition: all .3s ease-in;
+  &:hover {
+    color: $main-color;
+    background: black;
+  }
+}

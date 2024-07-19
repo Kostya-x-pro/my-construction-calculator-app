@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+.app__header{
+  &-title {
+    margin-top: 70px;
+    color: $white-text;
+    font-family: Helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 48px;
+    text-align: left;
+  }
+  &-divider {
+    margin-bottom: 52px;
+    width: 362px;
+    height: 4px;
+    background-color: $main-color;
+  }
+} 
+

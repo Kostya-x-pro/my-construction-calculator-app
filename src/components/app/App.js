@@ -1,8 +1,13 @@
+import MainPage from '../pages/mainPage/MainPage';
+import './app.scss';
+
 const App = () => {
   return (
-    <>
-      <div>Hello world</div>
-    </>
+    <main className="app">
+      <div className="content">
+        <MainPage/>
+      </div>
+    </main>
   )
 }
 

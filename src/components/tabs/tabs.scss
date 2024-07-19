@@ -1,0 +1,17 @@
+@import '../../styles/variables.scss';
+
+.tabs {
+  margin-bottom: 18px;
+  &__link {
+    background-color: rgba(6, 6, 6, 0.34);
+    padding: 12px 6px 16px 25px;
+    font-weight: 700;
+    font-size: 18px;
+    color: $white-text;
+    text-decoration: none;
+    
+    &.tabs__active {
+      border-bottom: 2px solid $main-color;
+    }
+  }
+}

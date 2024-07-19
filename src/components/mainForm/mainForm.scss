@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+.form__wrapper {
+  padding: 50px;
+  max-width: 1000px;
+  background: linear-gradient(rgba(167, 167, 172, 0.13), rgba(29, 29, 53, 0.9));
+  box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.5);
+}
+
+.main__form {
+  &_top {
+    max-width: 405px;
+  }
+  &_bottom {
+    display: grid;
+    grid-template-columns: repeat(2, 405px);
+    grid-template-rows: repeat(8, 1fr);
+    column-gap: 90px;
+  }
+  &_description {
+    font-size: 24px;
+    font-weight: 700;
+    color: $white-text;
+    margin-bottom: 40px;
+  }
+}
+
+.form__field {
+  display: flex;
+  justify-content: space-between;
+  color: $white-text;
+  margin-bottom: 15px;
+  label {
+    margin-right: 60px;
+    font-size: 18px;
+    font-weight: 400;
+    }
+  input {
+    margin-right: 8px;
+    width: 66px;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid $white-text;
+    text-align: center;
+    font-size: 18px;
+    color: rgba(255, 254, 254, 0.5);
+    &:focus {
+      border-bottom: 1px solid $main-color;
+    }
+  }
+  span {
+    font-size: 18px;
+  }
+}

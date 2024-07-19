@@ -1,0 +1,22 @@
+@import '../../styles/variables.scss';
+
+.price {
+  &__wrapper {
+    max-width: 450px;
+    padding: 100px 75px;
+    background: linear-gradient(rgba(167, 167, 172, 0.13), rgba(29, 29, 53, 0.9));
+    box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: $white-text;
+    font-weight: 700;
+  }
+  &__UAH, &__USD {
+    margin-bottom: 30px;
+    font-size: 40px;
+  }
+  &__total-description, &__usd-description {
+    margin-bottom: 30px;
+    font-size: 24px;
+  }
+
+}
