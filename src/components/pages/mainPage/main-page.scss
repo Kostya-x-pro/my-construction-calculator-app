@@ -2,4 +2,39 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 50px;
+  column-gap: 50px;
+}
+
+@media (max-width: 1700px) {
+  .mainpage__conten {
+    margin-bottom: 25px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .mainpage__conten {
+    display: flex;
+    flex-direction: column;
+    column-gap: 0px;
+  }
+}
+
+@media (max-width: 992px) {
+  .mainpage__conten {
+    row-gap: 20px;
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .mainpage__conten {
+    row-gap: 10px;
+  }
+}
+
+@media (max-width: 576px) {
+  .mainpage__conten {
+    margin-bottom: 5px;
+    row-gap: 5px;
+  }
 }

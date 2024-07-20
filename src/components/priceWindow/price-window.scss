@@ -14,9 +14,80 @@
     margin-bottom: 30px;
     font-size: 40px;
   }
-  &__total-description, &__usd-description {
+  &__total-description,  &__usd-decription {
     margin-bottom: 30px;
     font-size: 24px;
   }
+}
 
+@media (max-width: 1700px) {
+  .price {
+    &__wrapper {
+      max-width: 450px;
+      padding: 40px;
+    }
+    &__UAH, &__USD {
+      margin-bottom: 25px;
+    }
+    &__total-description,  &__usd-decription {
+      margin-bottom: 25px;
+      font-size: 24px;
+    }
+  }
+}
+
+@media (max-width: 1500px) {
+  .price {
+    &__wrapper {
+      max-width: 350px;
+      padding: 20px;
+    }
+    &__UAH, &__USD {
+      font-size: 30px;
+      margin-bottom: 15px;
+    }
+    &__total-description,  &__usd-decription {
+      margin-bottom: 15px;
+      font-size: 24px;
+    }
+  }
+}
+
+@media (max-width: 992px) {
+  .price {
+    &__wrapper {
+      padding: 10px;
+    }
+    &__UAH, &__USD {
+      font-size: 25px;
+      margin-bottom: 10px;
+    }
+    &__total-description,  &__usd-decription {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .price {
+    &__wrapper {
+      max-width: 260px;
+      padding: 5px;
+    }
+    &__UAH, &__USD {
+      font-size: 20px;
+    }
+    &__total-description,  &__usd-decription {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .price {
+    &__wrapper {
+      max-width: 100%;
+    }
+  }
 }
