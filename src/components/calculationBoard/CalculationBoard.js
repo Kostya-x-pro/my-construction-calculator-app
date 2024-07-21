@@ -12,7 +12,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="heightCeilingApartment"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="height Ceiling"
               />
@@ -33,7 +33,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="livingRoom"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="living Room"
               />
@@ -48,7 +48,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="corridor2"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="corridor2"
               />
@@ -65,7 +65,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="livingRoomWithKitchen-studio"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="livingRoomWithKitchen-studio"
               />
@@ -80,7 +80,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Kitchen"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Kitchen"
               />
@@ -95,7 +95,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Bedroom1"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Bedroom1"
               />
@@ -108,7 +108,7 @@ const CalculationBoard = () => {
           <div className="calculator__field">
             <label htmlFor="Pantry">Кладовая</label>
             <div>
-              <input id="Pantry" type="text" placeholder="0.0" name="Pantry" />
+              <input id="Pantry" type="number" placeholder="0.0" name="Pantry" />
               <span>
                 м<sup>2</sup>
               </span>
@@ -120,7 +120,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Bedroom2"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Bedroom2"
               />
@@ -135,7 +135,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Balcony1"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Balcony1"
               />
@@ -150,7 +150,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Childrens"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Childrens"
               />
@@ -165,7 +165,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Balcony2"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Balcony2"
               />
@@ -180,7 +180,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Childrens2"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Childrens2"
               />
@@ -193,7 +193,7 @@ const CalculationBoard = () => {
           <div className="calculator__field">
             <label htmlFor="Loggia">Лоджия</label>
             <div>
-              <input id="Loggia" type="text" placeholder="0.0" name="Loggia" />
+              <input id="Loggia" type="number" placeholder="0.0" name="Loggia" />
               <span>
                 м<sup>2</sup>
               </span>
@@ -205,7 +205,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Cabinet"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Cabinet"
               />
@@ -220,7 +220,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Bathroom-custom"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Bathroom-custom"
               />
@@ -235,7 +235,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Corridor1"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Corridor1"
               />
@@ -250,7 +250,7 @@ const CalculationBoard = () => {
             <div>
               <input
                 id="Bathroom-toilet"
-                type="text"
+                type="number"
                 placeholder="0.0"
                 name="Bathroom-toilet"
               />
@@ -266,7 +266,7 @@ const CalculationBoard = () => {
             <span></span>
             <span></span>
           </div>
-          <textarea name="calculator-notes" rows="3"></textarea>
+          <numberarea name="calculator-notes" rows="3"></numberarea>
         </div>
 
     </div>

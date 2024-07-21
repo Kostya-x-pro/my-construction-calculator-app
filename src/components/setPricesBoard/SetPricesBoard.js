@@ -13,8 +13,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="livingRoom"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="living Room"
               />
               <span>
@@ -28,8 +28,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="corridor2"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="corridor2"
               />
               <span>
@@ -43,8 +43,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="livingRoomWithKitchen-studio"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="livingRoomWithKitchen-studio"
               />
               <span>
@@ -58,8 +58,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Kitchen"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="Kitchen"
               />
               <span>
@@ -73,8 +73,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Bedroom1"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="Bedroom1"
               />
               <span>
@@ -86,7 +86,7 @@ const SetPricesBoard = () => {
           <div className="prices__field">
           <label htmlFor="Laying-laminate">Укладка ламината</label>
             <div>
-              <input id="Pantry" type="text" value="20" name="Pantry" />
+              <input id="Pantry" type="number" placeholder="20" name="Pantry" />
               <span>
                 грн/м<sup>2</sup>
               </span>
@@ -98,8 +98,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Bedroom2"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="Bedroom2"
               />
               <span>
@@ -113,8 +113,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Balcony1"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="Balcony1"
               />
               <span>
@@ -128,8 +128,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Childrens"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="Childrens"
               />
               <span>
@@ -143,8 +143,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Balcony2"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="Balcony2"
               />
               <span>
@@ -158,8 +158,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Childrens2"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="Childrens2"
               />
               <span>
@@ -171,7 +171,7 @@ const SetPricesBoard = () => {
           <div className="prices__field">
           <label htmlFor="Wiring">Разводка, установка сантехники</label>
             <div>
-              <input id="Loggia" type="text" value="30000" name="Loggia" />
+              <input id="Loggia" type="number" placeholder="30000" name="Loggia" />
               <span>
               грн
               </span>
@@ -184,8 +184,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Cabinet"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="Cabinet"
               />
               <span>
@@ -199,8 +199,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Bathroom-custom"
-                type="text"
-                value="40000"
+                type="number"
+                placeholder="40000"
                 name="Bathroom-custom"
               />
               <span>
@@ -215,8 +215,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Corridor1"
-                type="text"
-                value="20"
+                type="number"
+                placeholder="20"
                 name="Corridor1"
               />
               <span>
@@ -230,8 +230,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Bathroom-toilet"
-                type="text"
-                value="10000"
+                type="number"
+                placeholder="10000"
                 name="Bathroom-toilet"
               />
               <span>
@@ -245,8 +245,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Bathroom-toilet"
-                type="text"
-                value='10'
+                type="number"
+                placeholder='10'
                 name="Bathroom-toilet"
               />
               <span>
@@ -260,8 +260,8 @@ const SetPricesBoard = () => {
             <div>
               <input
                 id="Bathroom-toilet"
-                type="text"
-                value="10000"
+                type="number"
+                placeholder="10000"
                 name="Bathroom-toilet"
               />
               <span>
@@ -275,7 +275,7 @@ const SetPricesBoard = () => {
           <div className="notes__dots-wrapper">
             <span></span>
           </div>
-          <textarea name="form-notes" rows="3"></textarea>
+          <numberarea name="form-notes" rows="3"></numberarea>
           <button className='entru__btn'>Выйти</button>
         </div>
 
