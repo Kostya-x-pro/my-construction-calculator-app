@@ -1,6 +1,48 @@
+import { useHttp } from "../../hooks/http.hook";
+import { useState, useEffect } from "react";
 import "./calculationBoard.scss";
 
 const CalculationBoard = () => {
+  const [state, setState] = useState([]);
+  const {request} = useHttp();
+
+  useEffect(() => {
+    request("http://localhost:3001/squares")
+      .then(data => {
+        setState(rederItems(data));
+      })
+      .catch(error => console.log(error))
+  }, [])
+
+  const rederItems = (arr) => {
+    if (arr.length === 0) {
+      return <div>Данных пока что нет.</div>
+    }
+
+    return arr.map(({id, name}) => {
+      return (
+        <div 
+          className="calculator__field"
+          key={id}>
+            <label htmlFor={id}>{name}</label>
+            <div>
+              <input
+                id={id}
+                type="number"
+                placeholder="0.0"
+                name={id}
+              />
+              <span>
+                м<sup>2</sup>
+              </span>
+            </div>
+          </div>
+
+      )
+    })
+
+  }
+
   return (
     <div className="calculator__wrapper">
         {/* Rooms */}
@@ -28,237 +70,9 @@ const CalculationBoard = () => {
         </div>
 
         <div className="main__calculator_grid">
-          <div className="calculator__field">
-            <label htmlFor="livingRoom">Гостинная</label>
-            <div>
-              <input
-                id="livingRoom"
-                type="number"
-                placeholder="0.0"
-                name="living Room"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
+          
+        {state}
 
-          <div className="calculator__field">
-            <label htmlFor="corridor2">Коридор 2</label>
-            <div>
-              <input
-                id="corridor2"
-                type="number"
-                placeholder="0.0"
-                name="corridor2"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="livingRoomWithKitchen-studio">
-              Гостинная с кухней (студия)
-            </label>
-            <div>
-              <input
-                id="livingRoomWithKitchen-studio"
-                type="number"
-                placeholder="0.0"
-                name="livingRoomWithKitchen-studio"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Kitchen">Кухня</label>
-            <div>
-              <input
-                id="Kitchen"
-                type="number"
-                placeholder="0.0"
-                name="Kitchen"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Bedroom1">Спальня 1</label>
-            <div>
-              <input
-                id="Bedroom1"
-                type="number"
-                placeholder="0.0"
-                name="Bedroom1"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Pantry">Кладовая</label>
-            <div>
-              <input id="Pantry" type="number" placeholder="0.0" name="Pantry" />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Bedroom2">Спальня 2</label>
-            <div>
-              <input
-                id="Bedroom2"
-                type="number"
-                placeholder="0.0"
-                name="Bedroom2"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Balcony1">Балкон 1</label>
-            <div>
-              <input
-                id="Balcony1"
-                type="number"
-                placeholder="0.0"
-                name="Balcony1"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Childrens">Детская 1</label>
-            <div>
-              <input
-                id="Childrens"
-                type="number"
-                placeholder="0.0"
-                name="Childrens"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Balcony2">Балкон 2</label>
-            <div>
-              <input
-                id="Balcony2"
-                type="number"
-                placeholder="0.0"
-                name="Balcony2"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Childrens2">Детская 2</label>
-            <div>
-              <input
-                id="Childrens2"
-                type="number"
-                placeholder="0.0"
-                name="Childrens2"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Loggia">Лоджия</label>
-            <div>
-              <input id="Loggia" type="number" placeholder="0.0" name="Loggia" />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Cabinet">Кабинет</label>
-            <div>
-              <input
-                id="Cabinet"
-                type="number"
-                placeholder="0.0"
-                name="Cabinet"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Bathroom-custom">Санузел (ванная или душ)</label>
-            <div>
-              <input
-                id="Bathroom-custom"
-                type="number"
-                placeholder="0.0"
-                name="Bathroom-custom"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Corridor1">Коридор 1</label>
-            <div>
-              <input
-                id="Corridor1"
-                type="number"
-                placeholder="0.0"
-                name="Corridor1"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
-
-          <div className="calculator__field">
-            <label htmlFor="Bathroom-toilet">Санузел (туалет)</label>
-            <div>
-              <input
-                id="Bathroom-toilet"
-                type="number"
-                placeholder="0.0"
-                name="Bathroom-toilet"
-              />
-              <span>
-                м<sup>2</sup>
-              </span>
-            </div>
-          </div>
         </div>
 
         <div className="main__calculator-notes">
@@ -266,7 +80,7 @@ const CalculationBoard = () => {
             <span></span>
             <span></span>
           </div>
-          <numberarea name="calculator-notes" rows="3"></numberarea>
+          <textarea name="calculator-notes" rows="3"></textarea>
         </div>
 
     </div>
@@ -274,10 +88,3 @@ const CalculationBoard = () => {
 };
 
 export default CalculationBoard;
-
-
-
-
-
-
-        
