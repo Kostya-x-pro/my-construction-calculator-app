@@ -8,9 +8,20 @@ import './main-page.scss';
 
 const MainPage = () => {
   const [tabNum, setTabNum] = useState(0);
+  // const [area, setArea] = useState(0);
+  // // Получаю общую площадь из компонента CalculationBoard
+  // const calcArea = (obj) => {
+  //   let total = 0;
+  //   const arr = Object.values(obj);
+  //   if (arr.length > 0) {
+  //     total = arr.reduce((acc, curr) => acc + curr);
+  //   }
+  //   setArea(total)
+  // }
+
   const tabsComponents = [
-  <CalculationBoard/>,   
-  <CalculationWorks/>
+    // <CalculationBoard/>,   
+    // <CalculationWorks/> 
   ]
   let activTab = tabsComponents[tabNum];
   const activTabClass = ' tabs__active'

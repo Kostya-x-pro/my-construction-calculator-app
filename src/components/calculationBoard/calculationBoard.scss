@@ -76,6 +76,10 @@
     &:focus {
       border-bottom: 1px solid $main-color;
     }
+    &.error {
+      color: $alert;
+      border-bottom: 1px solid $alert;
+    }
   }
   span {
     font-size: 18px;
