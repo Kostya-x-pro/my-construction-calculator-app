@@ -20,8 +20,8 @@ const MainPage = () => {
   // }
 
   const tabsComponents = [
-    // <CalculationBoard/>,   
-    // <CalculationWorks/> 
+    <CalculationBoard/>,   
+    <CalculationWorks/> 
   ]
   let activTab = tabsComponents[tabNum];
   const activTabClass = ' tabs__active'

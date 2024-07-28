@@ -1,52 +1,73 @@
 import { useHttp } from "../../hooks/http.hook";
-import { useState, useEffect } from "react";
+import {useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+import {squaresFetching, squaresFetched, squaresFetchedError} from '../../redux/actions'
+
 import "./calculationBoard.scss";
 
 const CalculationBoard = () => {
-  const [works, setWorks] = useState([]);
-  const [calculations, setCalculations] = useState({});
-  const [errors, setErrors] = useState({});
-
+  const {squares, squaresLoadingStatus} = useSelector(state => state);
+  const dispatch = useDispatch();
   const {request} = useHttp();
 
   useEffect(() => {
+    dispatch(squaresFetching());
     request("http://localhost:3001/squares")
-      .then(data => {
-        const initialCalculations = {};
-        data.forEach(item => {
-          const localStorageData = localStorage.getItem(item.id);
-          initialCalculations[item.id] = localStorageData !== null ? +localStorageData : item.value;
-        });
-        setCalculations(initialCalculations);
-        setWorks(data);
-      })
-      .catch(error => console.log(error))
-    }, [request])
+      .then(data => dispatch(squaresFetched(data)))
+      .catch(() => dispatch(squaresFetchedError()))
+  }, [])
 
-  const onValueChange = (e) => {
-    const target = e.target;
-    const value = +target.value;
-
-    // Устанавливаю данные для дальнейшего расчёта
-    setCalculations(calculations => ({
-      ...calculations, 
-      [target.id]: value
-    }))
-    setErrors(errors => ({
-      ...errors, 
-      [target.id]: value < 0
-    }))
-
-    // Записываю в LS (Что бы данные остались при переходе по табам)
-    localStorage.setItem(target.id, target.value);
+  if (squaresLoadingStatus === 'loading') {
+    return <div>Идёт загрузка "здесь будет компонент загуруки"</div>
+  } else if (squaresLoadingStatus === 'error') {
+    return <div>Произошла ошибка при загрузке</div>
   }
 
-  const rederItems = () => {
-    if (works.length === 0) {
+  // const [works, setWorks] = useState([]);
+  // const [calculations, setCalculations] = useState({});
+  // const [errors, setErrors] = useState({});
+
+  // const {request} = useHttp();
+
+  // useEffect(() => {
+  //   request("http://localhost:3001/squares")
+  //     .then(data => {
+  //       const initialCalculations = {};
+  //       data.forEach(item => {
+  //         const localStorageData = localStorage.getItem(item.id);
+  //         initialCalculations[item.id] = localStorageData !== null ? +localStorageData : item.value;
+  //       });
+  //       setCalculations(initialCalculations);
+  //       setWorks(data);
+  //     })
+  //     .catch(error => console.log(error))
+  //   }, [request])
+
+  // const onValueChange = (e) => {
+  //   const target = e.target;
+  //   const value = +target.value;
+
+  //   // Устанавливаю данные для дальнейшего расчёта
+  //   setCalculations(calculations => ({
+  //     ...calculations, 
+  //     [target.id]: value
+  //   }))
+  //   setErrors(errors => ({
+  //     ...errors, 
+  //     [target.id]: value < 0
+  //   }))
+
+  //   // Записываю в LS (Что бы данные остались при переходе по табам)
+  //   localStorage.setItem(target.id, target.value);
+  // }
+
+  const rederItems = (arr) => {
+    if (arr.length === 0) {
       return <div>Данных пока что нет.</div>
     }
 
-    return works.map(({id, name}) => {
+    return arr.map(({id, name, value}) => {
       return (
         <div 
           className="calculator__field"
@@ -54,13 +75,11 @@ const CalculationBoard = () => {
           <label htmlFor={id}>{name}</label>
           <div>
             <input
-              className={errors[id] ? 'error' : ''}
-              onChange={onValueChange}
               id={id}
               type="number"
               placeholder="0.0"
               name={id}
-              value={calculations[id] || ""}
+              // defaultValue={value}
             />
             <span>
               м<sup>2</sup>
@@ -98,7 +117,7 @@ const CalculationBoard = () => {
         </div>
 
         <div className="main__calculator_grid">
-          {rederItems()}
+          {rederItems(squares)}
         </div>
 
         <div className="main__calculator-notes">
@@ -114,3 +133,36 @@ const CalculationBoard = () => {
 };
 
 export default CalculationBoard;
+
+
+
+
+// const rederItems = () => {
+//   if (works.length === 0) {
+//     return <div>Данных пока что нет.</div>
+//   }
+
+//   return works.map(({id, name}) => {
+//     return (
+//       <div 
+//         className="calculator__field"
+//         key={id}>
+//         <label htmlFor={id}>{name}</label>
+//         <div>
+//           <input
+//             className={errors[id] ? 'error' : ''}
+//             onChange={onValueChange}
+//             id={id}
+//             type="number"
+//             placeholder="0.0"
+//             name={id}
+//             value={calculations[id] || ""}
+//           />
+//           <span>
+//             м<sup>2</sup>
+//           </span>
+//         </div>
+//       </div>
+//     )
+//   })
+// }
