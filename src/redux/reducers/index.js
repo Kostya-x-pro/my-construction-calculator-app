@@ -1,6 +1,8 @@
 const initialState = {
   squares: [],
   squaresLoadingStatus: 'idle',
+  squaresValue: {},
+
   operations: [],
   operationsLoadingStatus: 'idle',
 }
@@ -23,6 +25,15 @@ const reducer = (state = initialState, action) => {
         ...state,
         squaresLoadingStatus: 'error'
       }
+    case 'SETSQUARESVALUES':
+      return {
+        ...state,
+        squaresValue: {
+          ...state.squaresValue,
+          [action.payload.name]: +action.payload.value,
+        }
+      }
+
     case 'OPERATIONS_FETCHING':
       return {
         ...state,

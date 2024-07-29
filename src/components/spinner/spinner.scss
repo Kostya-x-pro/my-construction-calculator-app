@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+.spinner {
+  &__wrapper {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    column-gap: 5px;
+  }
+  &__title {
+    font-size: 16px;
+    color: $white-text;
+    order: 1;
+  }
+}
+.spin2 {
+  transform-origin: center;
+  animation: spin2 1.2s ease-in-out infinite,
+  spin 1s linear infinite;
+  animation-direction: alternate;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin2 {
+  0% {
+    stroke-dasharray: 1, 800;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 400, 400;
+    stroke-dashoffset: -200px;
+  }
+  100% {
+    stroke-dasharray: 800, 1;
+    stroke-dashoffset: -800px;
+  }
+}

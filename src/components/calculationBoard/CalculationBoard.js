@@ -2,12 +2,23 @@ import { useHttp } from "../../hooks/http.hook";
 import {useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {squaresFetching, squaresFetched, squaresFetchedError} from '../../redux/actions'
+import {
+  squaresFetching, 
+  squaresFetched, 
+  squaresFetchedError, 
+  setSquaresValues,
+} from '../../redux/actions'
+import Spinner from "../spinner/Spinner";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 
 import "./calculationBoard.scss";
 
 const CalculationBoard = () => {
-  const {squares, squaresLoadingStatus} = useSelector(state => state);
+  const {
+    squares, 
+    squaresLoadingStatus,
+    squaresValue,
+  } = useSelector(state => state);
   const dispatch = useDispatch();
   const {request} = useHttp();
 
@@ -19,55 +30,22 @@ const CalculationBoard = () => {
   }, [])
 
   if (squaresLoadingStatus === 'loading') {
-    return <div>Идёт загрузка "здесь будет компонент загуруки"</div>
+    return <Spinner/>
   } else if (squaresLoadingStatus === 'error') {
-    return <div>Произошла ошибка при загрузке</div>
+    return <ErrorMessage/>
   }
 
-  // const [works, setWorks] = useState([]);
-  // const [calculations, setCalculations] = useState({});
-  // const [errors, setErrors] = useState({});
-
-  // const {request} = useHttp();
-
-  // useEffect(() => {
-  //   request("http://localhost:3001/squares")
-  //     .then(data => {
-  //       const initialCalculations = {};
-  //       data.forEach(item => {
-  //         const localStorageData = localStorage.getItem(item.id);
-  //         initialCalculations[item.id] = localStorageData !== null ? +localStorageData : item.value;
-  //       });
-  //       setCalculations(initialCalculations);
-  //       setWorks(data);
-  //     })
-  //     .catch(error => console.log(error))
-  //   }, [request])
-
-  // const onValueChange = (e) => {
-  //   const target = e.target;
-  //   const value = +target.value;
-
-  //   // Устанавливаю данные для дальнейшего расчёта
-  //   setCalculations(calculations => ({
-  //     ...calculations, 
-  //     [target.id]: value
-  //   }))
-  //   setErrors(errors => ({
-  //     ...errors, 
-  //     [target.id]: value < 0
-  //   }))
-
-  //   // Записываю в LS (Что бы данные остались при переходе по табам)
-  //   localStorage.setItem(target.id, target.value);
-  // }
+  const onValueChange = (e) => {
+    const target = e.target;
+    dispatch(setSquaresValues(target.name, target.value));
+  }
 
   const rederItems = (arr) => {
     if (arr.length === 0) {
-      return <div>Данных пока что нет.</div>
+      return <div>Данных пока что нет...</div>
     }
 
-    return arr.map(({id, name, value}) => {
+    return arr.map(({id, name}) => {
       return (
         <div 
           className="calculator__field"
@@ -75,11 +53,13 @@ const CalculationBoard = () => {
           <label htmlFor={id}>{name}</label>
           <div>
             <input
+              className={squaresValue[id] < 0 ? 'error' : ''}
+              onChange={onValueChange}
               id={id}
               type="number"
               placeholder="0.0"
               name={id}
-              // defaultValue={value}
+              defaultValue={squaresValue.hasOwnProperty(id) ? squaresValue[id] : null}
             />
             <span>
               м<sup>2</sup>
@@ -127,42 +107,8 @@ const CalculationBoard = () => {
           </div>
           <textarea name="calculator-notes" rows="3"></textarea>
         </div>
-
     </div>
   );
 };
 
 export default CalculationBoard;
-
-
-
-
-// const rederItems = () => {
-//   if (works.length === 0) {
-//     return <div>Данных пока что нет.</div>
-//   }
-
-//   return works.map(({id, name}) => {
-//     return (
-//       <div 
-//         className="calculator__field"
-//         key={id}>
-//         <label htmlFor={id}>{name}</label>
-//         <div>
-//           <input
-//             className={errors[id] ? 'error' : ''}
-//             onChange={onValueChange}
-//             id={id}
-//             type="number"
-//             placeholder="0.0"
-//             name={id}
-//             value={calculations[id] || ""}
-//           />
-//           <span>
-//             м<sup>2</sup>
-//           </span>
-//         </div>
-//       </div>
-//     )
-//   })
-// }

@@ -16,3 +16,14 @@ export const squaresFetchedError = () => {
     type: 'SQUARES_FETCHING_ERROR'
   }
 }
+
+export const setSquaresValues = (name, value) => {
+  return {
+    type: 'SETSQUARESVALUES',
+    payload: {
+      name: name,
+      value: value,
+      // error: value < 0 ? 'error' : ''
+    }
+  }
+}
