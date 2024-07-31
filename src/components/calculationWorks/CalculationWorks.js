@@ -5,10 +5,16 @@ import { useHttp } from '../../hooks/http.hook';
 import { 
   operationsFetching, 
   operationsFetched, 
-  operationsFetchedError
+  operationsFetchedError,
+
+  addOperation,
+  removeOperation,
 } from '../../redux/actions';
+
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
+import { notes_2 } from '../../utils/notesDataArrays';
+import NotesList from '../notesList/NotesList';
 
 import './calculationWorks.scss';
 
@@ -16,7 +22,8 @@ const CalculationWorks = () => {
   const {
     operations,
     operationsLoadingStatus, 
-    squaresValue
+    squaresValue,
+    operationsResult
   } = useSelector(state => state);
   const dispatch = useDispatch();
   const {request} = useHttp();
@@ -36,20 +43,11 @@ const CalculationWorks = () => {
 
   // Функция расчёта стоимости
   const onCalculatePrice = (e) => {
-    // console.log(operations.filter(item => item.id === e.target.name));
-
-    // console.log(e.target.name);
-    // operations.forEach(item => console.log(item.id));
-  //  let result = 0;
-  //  Object.values(squaresValue).forEach(item => {
-  //   result = result + (item * 20)
-  //  });
-  //  console.log(result);
-
-    // console.log(e.target);
-    // console.log(e.target.name);
-    // console.log(e.target.checked);
-    // console.log(squaresValue);
+    if (e.target.checked) {
+      dispatch(addOperation(e.target.name))
+    } else {
+      dispatch(removeOperation(e.target.name))
+    }
 
   }
   // console.log(operations);
@@ -99,15 +97,19 @@ const CalculationWorks = () => {
        {renderItems(operations)}
       </div>
 
-        <div className="main__calculator-notes">
-          <div className="notes__dots-wrapper">
-            <span></span>
-            <span></span>
-          </div>
-          <textarea name="calculator-notes" rows="3"></textarea>
-        </div>
-
+      <NotesList notes_1={notes_2}/>
     </div>
   )
 }
 export default CalculationWorks;
+
+
+
+//  const onCalculatePrice = (e) => {
+//   if (e.target.checked) {
+//     dispatch(addOperation(e.target.name))
+//   } else {
+//     dispatch(removeOperation(e.target.name))
+//   }
+
+// }

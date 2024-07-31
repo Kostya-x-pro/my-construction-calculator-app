@@ -1,3 +1,6 @@
+import NotesList from "../notesList/NotesList";
+import { notes_3 } from "../../utils/notesDataArrays";
+
 import "./setPricesBoard.scss";
 
 const SetPricesBoard = () => {
@@ -270,15 +273,10 @@ const SetPricesBoard = () => {
             </div>
           </div>
         </div>
-
-        <div className="prices__board-notes">
-          <div className="notes__dots-wrapper">
-            <span></span>
-          </div>
-          <numberarea name="form-notes" rows="3"></numberarea>
+        <div className="notes__wrapper">
+          <NotesList notes_1={notes_3}/>
           <button className='entru__btn'>Выйти</button>
         </div>
-
     </div>
   );
 };

@@ -1,0 +1,91 @@
+@import '../../styles/variables.scss';
+
+.notes {
+  &__wrapper {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__title {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    color: $main-color;
+  }
+  &__list{
+    max-width: 795px;
+    list-style-position: inside;
+    &_item {
+        position: relative;
+        color: $white-text;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 21px;
+        &::before{
+          content: '';
+          position: absolute;
+          top: 7px;
+          left: -15px;
+          display: inline-block;
+          vertical-align: middle;
+          width: 5px;
+          height: 5px;
+          background-color: $main-color;
+          border-radius: 100%;
+        }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .notes {
+    &__wrapper {
+      margin-top: 25px;
+    }
+    &__title {
+      font-size: 16px;
+      line-height: 18px;
+    }
+    &__list{
+      &_item {
+          font-size: 16px;
+          line-height: 18px;
+      }
+    }
+  } 
+}
+
+@media (max-width: 768px) {
+  .notes {
+    &__wrapper {
+      margin-top: 10px;
+    }
+    &__title {
+      line-height: 1;
+    }
+    &__list{
+      &_item {
+          line-height: 1;
+          &::before{
+            top: 5px;
+            left: -7px;
+            width: 3px;
+            height: 3px;
+          }
+      }
+    }
+  } 
+}
+
+@media (max-width: 576px) {
+  .notes {
+    &__title {
+      font-size: 14px;
+    }
+    &__list{
+      &_item {
+        font-size: 14px;
+      }
+    }
+  } 
+}

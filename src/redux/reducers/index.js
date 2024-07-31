@@ -5,6 +5,8 @@ const initialState = {
 
   operations: [],
   operationsLoadingStatus: 'idle',
+
+  operationsResult: 0,
 }
 
 const reducer = (state = initialState, action) => {
@@ -51,8 +53,72 @@ const reducer = (state = initialState, action) => {
         operationsLoadingStatus: 'error'
       }
     }
+
+    case 'ADD_OPERTION': {
+      const arrAllSquares = Object.values(state.squaresValue).filter(item  => item > 0);
+      if (arrAllSquares.length === 0) {
+        return state
+      }
+      const totalSumArea = arrAllSquares.reduce((acc, cur) => acc + cur);
+      const selectedWork = state.operations.filter(item => item.id === action.payload)
+
+      return {
+        ...state,
+        operationsResult: state.operationsResult + (totalSumArea * +selectedWork[0].count)
+      }
+    }
+
+    case 'REMOVE_OPERTION': {
+      const arrAllSquares = Object.values(state.squaresValue).filter(item  => item > 0);
+      if (arrAllSquares.length === 0) {
+        return state
+      }
+      const totalSumArea = arrAllSquares.reduce((acc, cur) => acc + cur);
+      const selectedWork = state.operations.filter(item => item.id === action.payload)
+
+      return {
+        ...state,
+        operationsResult: state.operationsResult - (totalSumArea * +selectedWork[0].count)
+      }
+    }
+
+
     default: return state 
   }
 }
 
 export default reducer;
+
+
+
+
+
+
+
+// case 'ADD_OPERTION': {
+//   const arrAllSquares = Object.values(state.squaresValue).filter(item  => item > 0);
+//   if (arrAllSquares.length === 0) {
+//     return state
+//   }
+//   const totalSumArea = arrAllSquares.reduce((acc, cur) => acc + cur);
+//   const selectedWork = state.operations.filter(item => item.id === action.payload)
+
+//   return {
+//     ...state,
+//     operationsResult: state.operationsResult + (totalSumArea * +selectedWork[0].count)
+//   }
+// }
+
+// case 'REMOVE_OPERTION': {
+//   const arrAllSquares = Object.values(state.squaresValue).filter(item  => item > 0);
+//   if (arrAllSquares.length === 0) {
+//     return state
+//   }
+//   const totalSumArea = arrAllSquares.reduce((acc, cur) => acc + cur);
+//   const selectedWork = state.operations.filter(item => item.id === action.payload)
+
+//   return {
+//     ...state,
+//     operationsResult: state.operationsResult - (totalSumArea * +selectedWork[0].count)
+//   }
+// }

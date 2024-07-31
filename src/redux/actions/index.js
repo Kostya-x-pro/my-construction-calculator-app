@@ -9,6 +9,9 @@ import {
   operationsFetching, 
   operationsFetched, 
   operationsFetchedError,
+
+  addOperation,
+  removeOperation,
 } from "./operationsActions";
 
 export {
@@ -20,4 +23,7 @@ export {
   operationsFetching,
   operationsFetched,
   operationsFetchedError,
+
+  addOperation,
+  removeOperation,
 }

@@ -16,3 +16,33 @@ export const operationsFetchedError = () => {
     type: 'OPERATIONS_FETCHING_ERROR'
   }
 }
+
+export const addOperation = (term) => {
+  return {
+    type: 'ADD_OPERTION',
+    payload: term
+  }
+}
+export const removeOperation = (term) => {
+  return {
+    type: 'REMOVE_OPERTION',
+    payload: term
+  }
+}
+
+
+
+
+
+// export const addOperation = (term) => {
+//   return {
+//     type: 'ADD_OPERTION',
+//     payload: term
+//   }
+// }
+// export const removeOperation = (term) => {
+//   return {
+//     type: 'REMOVE_OPERTION',
+//     payload: term
+//   }
+// }

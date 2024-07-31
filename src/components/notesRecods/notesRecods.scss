@@ -1,0 +1,59 @@
+@import '../../styles/variables.scss';
+
+.main__calculator {
+  &-notes {
+    position: relative;
+    max-width: 795px;
+    textarea {
+      padding-left: 20px;
+      resize: none;
+      width: 100%;
+      outline: none;
+      font-size: 16px;
+      color: $white-text;
+      border: none;
+      background: none;
+    }
+  }
+}
+
+.notes__dots-wrapper {
+  position: absolute;
+  left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+  span {
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    background: $main-color;
+  }
+}
+
+@media (max-width: 1700px) {  
+  .main__calculator {
+    &_bottom {
+      column-gap: 40px;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .main__calculator {
+    &_grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  } 
+}
+
+@media (max-width: 576px) {
+  .main__calculator {
+    &-notes {
+      textarea {
+        font-size: 14px;
+      }
+    }
+  }
+}

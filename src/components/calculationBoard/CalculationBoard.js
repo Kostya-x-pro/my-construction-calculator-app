@@ -8,8 +8,11 @@ import {
   squaresFetchedError, 
   setSquaresValues,
 } from '../../redux/actions'
+
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
+import { notes_1 } from '../../utils/notesDataArrays';
+import NotesList from '../notesList/NotesList';
 
 import "./calculationBoard.scss";
 
@@ -100,13 +103,7 @@ const CalculationBoard = () => {
           {rederItems(squares)}
         </div>
 
-        <div className="main__calculator-notes">
-          <div className="notes__dots-wrapper">
-            <span></span>
-            <span></span>
-          </div>
-          <textarea name="calculator-notes" rows="3"></textarea>
-        </div>
+        <NotesList notes_1={notes_1}/>
     </div>
   );
 };
